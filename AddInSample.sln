@@ -15,6 +15,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostAdapter", "HostAdapter\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayHelloTask", "SayHelloTask\SayHelloTask.csproj", "{16943C77-0471-4A79-9092-EC58BC0F58DA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BA1022C3-605A-4ECC-BF53-7A2880822AD5}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayByeTask", "SayByeTask\SayByeTask.csproj", "{7FD19878-F4CE-46F8-9F58-2062E34A3517}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AddIns", "AddIns", "{F3461EF7-9AD9-4929-9EC0-7C732EA42FAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HostPlumbing", "HostPlumbing", "{A564D217-3A0C-4BEB-B4FC-7890651C1B37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AddInPlumbing", "AddInPlumbing", "{DA69992B-F567-4C4A-AA2B-0054D456ECA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,8 +64,20 @@ Global
 		{16943C77-0471-4A79-9092-EC58BC0F58DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16943C77-0471-4A79-9092-EC58BC0F58DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16943C77-0471-4A79-9092-EC58BC0F58DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD19878-F4CE-46F8-9F58-2062E34A3517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD19878-F4CE-46F8-9F58-2062E34A3517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD19878-F4CE-46F8-9F58-2062E34A3517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD19878-F4CE-46F8-9F58-2062E34A3517}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7FD19878-F4CE-46F8-9F58-2062E34A3517} = {F3461EF7-9AD9-4929-9EC0-7C732EA42FAE}
+		{16943C77-0471-4A79-9092-EC58BC0F58DA} = {F3461EF7-9AD9-4929-9EC0-7C732EA42FAE}
+		{B8D54586-DC18-4043-9FD5-9122E3606852} = {A564D217-3A0C-4BEB-B4FC-7890651C1B37}
+		{C614A511-DD3D-4DC3-B0DC-3B38F158B1CA} = {A564D217-3A0C-4BEB-B4FC-7890651C1B37}
+		{52094F4E-F2DB-432C-9C36-D74C1404BD8A} = {DA69992B-F567-4C4A-AA2B-0054D456ECA1}
+		{3B11B21C-405C-4F8D-A6F5-F57D657FFCB7} = {DA69992B-F567-4C4A-AA2B-0054D456ECA1}
 	EndGlobalSection
 EndGlobal

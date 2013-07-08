@@ -7,11 +7,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using HostView;
+using NLog;
 
 namespace AddInHost
 {
     class Program
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        
         static void Main(string[] args)
         {
             string path = Environment.CurrentDirectory;
@@ -20,20 +23,21 @@ namespace AddInHost
             var addInTokens = AddInStore.FindAddIns(typeof (ScheduledTaskHostView), path);
             foreach (var addInToken in addInTokens)
             {
-                Trace.TraceInformation(addInToken.AddInFullName);
+                _logger.Debug("Found add-in: " + addInToken.AddInFullName);
             }
 
-            var addins = addInTokens.Select(a => a.Activate<ScheduledTaskHostView>(AddInSecurityLevel.FullTrust)).ToList();
+            var addins = addInTokens.Select(a => 
+                a.Activate<ScheduledTaskHostView>(AddInSecurityLevel.FullTrust, a.AddInFullName)).ToList();
 
             while (true)
             {
+                _logger.Debug("Running tasks");
+
                 foreach (var task in addins)
                 {
                     task.Run(new RunOptions {PointInTime = DateTime.Now});
                 }
                 
-                //if(Console.KeyAvailable)
-                //    break;
                 Thread.Sleep(1000);
             }
         }
