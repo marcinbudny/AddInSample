@@ -35,7 +35,14 @@ namespace AddInHost
 
                 foreach (var task in addins)
                 {
-                    task.Run(new RunOptions {PointInTime = DateTime.Now});
+                    try
+                    {
+                        task.Run(new RunOptions {PointInTime = DateTime.Now});
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.ErrorException("Running task resulted in exception", ex);
+                    }
                 }
                 
                 Thread.Sleep(1000);

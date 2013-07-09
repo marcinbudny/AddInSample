@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AddInView;
+using MultiversionLib;
 using NLog;
 
 namespace SayByeTask
@@ -14,6 +15,8 @@ namespace SayByeTask
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
+        private NameGenerator _nameGenerator = new NameGenerator();
+
         public override ScheduleOptions GetScheduleOptions()
         {
             return new ScheduleOptions();
@@ -22,7 +25,7 @@ namespace SayByeTask
         public override TaskResult Run(RunOptions options)
         {
             _logger.Debug("NLog version is " + typeof(Logger).Assembly.GetName().Version);
-            _logger.Info("See ya!");
+            _logger.Info("See ya " + _nameGenerator.GetName() + "!");
             return new TaskResult { Successful = true };
         }
     }
