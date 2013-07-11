@@ -27,7 +27,7 @@ namespace AddInHost
             }
 
             var addins = addInTokens.Select(a => 
-                a.Activate<ScheduledTaskHostView>(AddInSecurityLevel.FullTrust, a.AddInFullName)).ToList();
+                a.Activate<ScheduledTaskHostView>(AddInSecurityLevel.FullTrust)).ToList();
 
             while (true)
             {
