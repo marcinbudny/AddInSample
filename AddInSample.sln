@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SickTask", "SickTask\SickTa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RogueTask", "RogueTask\RogueTask.csproj", "{CCECED50-81F1-4CF5-BF99-B1684D99171F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddInHostExternalProcess", "AddInHostExternalProcess\AddInHostExternalProcess.csproj", "{EC4C9159-66C8-48FC-B8C8-23D38955D888}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{CCECED50-81F1-4CF5-BF99-B1684D99171F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCECED50-81F1-4CF5-BF99-B1684D99171F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCECED50-81F1-4CF5-BF99-B1684D99171F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC4C9159-66C8-48FC-B8C8-23D38955D888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4C9159-66C8-48FC-B8C8-23D38955D888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4C9159-66C8-48FC-B8C8-23D38955D888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4C9159-66C8-48FC-B8C8-23D38955D888}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
