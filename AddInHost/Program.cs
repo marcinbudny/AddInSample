@@ -8,45 +8,41 @@ using System.Threading;
 using System.Threading.Tasks;
 using HostView;
 using NLog;
+using Quartz;
+using Quartz.Impl;
 
 namespace AddInHost
 {
     class Program
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
+        private static List<AddInActivationInfo> addins = new List<AddInActivationInfo>(); 
         
         static void Main(string[] args)
         {
+            // create quartz scheduler
+            ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
+            var scheduler = schedulerFactory.GetScheduler();
+
             string path = Environment.CurrentDirectory;
             AddInStore.Update(path);
 
-            var addInTokens = AddInStore.FindAddIns(typeof (ScheduledTaskHostView), path);
+            var addInTokens = AddInStore.FindAddIns(typeof(ScheduledTaskHostView), path);
+
             foreach (var addInToken in addInTokens)
             {
                 _logger.Debug("Found add-in: " + addInToken.AddInFullName);
+
+                addins.Add(ActivationHelper.ActivateAddIn(addInToken));
             }
 
-            var addins = addInTokens.Select(a => 
-                a.Activate<ScheduledTaskHostView>(AddInSecurityLevel.FullTrust)).ToList();
-
-            while (true)
+            foreach (var info in addins)
             {
-                _logger.Debug("Running tasks");
-
-                foreach (var task in addins)
-                {
-                    try
-                    {
-                        task.Run(new RunOptions {PointInTime = DateTime.Now});
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.ErrorException("Running task resulted in exception", ex);
-                    }
-                }
-                
-                Thread.Sleep(1000);
+                scheduler.ScheduleJob(info.JobDetail, info.Trigger);
             }
+
+            scheduler.Start();
+            Console.ReadLine();
         }
     }
 }

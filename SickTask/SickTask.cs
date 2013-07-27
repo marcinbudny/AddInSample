@@ -21,7 +21,7 @@ namespace SickTask
 
         public override ScheduleOptions GetScheduleOptions()
         {
-            return new ScheduleOptions { CronExpression = "* * * * * ?" };
+            return new ScheduleOptions { CronExpression = "0/5 * * * * ?" };
         }
 
         public override TaskResult Run(RunOptions options)

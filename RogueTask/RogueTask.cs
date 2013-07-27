@@ -29,7 +29,7 @@ namespace RogueTask
             {
                 _exceptionThrower = new Thread(() =>
                     {
-                        Thread.Sleep(10000);
+                        Thread.Sleep(30000);
                         throw new Exception("Nobody expects the Spanish Inquisition!");
                     });
                 _exceptionThrower.Start();
