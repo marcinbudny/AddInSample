@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using AddInHostExternalProcess;
 using HostView;
 using NLog;
+using Quartz;
+using Quartz.Impl;
 
 namespace AddInHost
 {
@@ -20,6 +22,10 @@ namespace AddInHost
 
         static void Main(string[] args)
         {
+            // create quartz scheduler
+            ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
+            var scheduler = schedulerFactory.GetScheduler();
+            
             string path = Environment.CurrentDirectory;
             AddInStore.Update(path);
 
@@ -29,61 +35,16 @@ namespace AddInHost
             {
                 _logger.Debug("Found add-in: " + addInToken.AddInFullName);
 
-                addins.Add(ActivateAddIn(addInToken));
+                addins.Add(ActivationHelper.ActivateAddIn(addInToken));
             }
 
-            while (true)
+            foreach (var info in addins)
             {
-                _logger.Debug("Running tasks");
-
-                foreach (var info in addins)
-                {
-                    try
-                    {
-                        info.AddIn.Run(new RunOptions {PointInTime = DateTime.Now});
-                    }
-                    catch (RemotingException ex)
-                    {
-                        _logger.ErrorException(
-                            string.Format(
-                                "Exception occured when communicating with addin {0}, probably process crashed",
-                                info.Token.AddInFullName), ex);
-
-                        _logger.Debug("Attempting to restart addin process");
-
-                        info.Process.Shutdown();
-
-                        var reactivatedInfo = ActivateAddIn(info.Token);
-                        // store new information in existing info
-                        info.AddIn = reactivatedInfo.AddIn;
-                        info.Process = reactivatedInfo.Process;
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.ErrorException("Running task resulted in exception", ex);
-                    }
-                }
-
-                Thread.Sleep(1000);
+                scheduler.ScheduleJob(info.JobDetail, info.Trigger);
             }
-        }
 
-        private static AddInActivationInfo ActivateAddIn(AddInToken token)
-        {
-            var process = new AddInProcess();
-
-            process.ShuttingDown +=
-                (sender, eventArgs) =>
-                _logger.Warn(string.Format("Proccess for AddIn {0} is shutting down!",
-                                           GetInfoByProcess(sender as AddInProcess).Token.AddInFullName));
-            var addin = token.Activate<ScheduledTaskHostView>(process, AddInSecurityLevel.FullTrust);
-
-            return new AddInActivationInfo
-            {
-                AddIn = addin,
-                Process = process,
-                Token = token
-            };
+            scheduler.Start();
+            Console.ReadLine();
         }
 
         private static AddInActivationInfo GetInfoByToken(AddInToken token)

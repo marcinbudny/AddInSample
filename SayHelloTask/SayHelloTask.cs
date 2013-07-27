@@ -20,7 +20,7 @@ namespace SayHelloTask
 
         public override ScheduleOptions GetScheduleOptions()
         {
-            return new ScheduleOptions();
+            return new ScheduleOptions { CronExpression = "* * * * * ?" };
         }
 
         public override TaskResult Run(RunOptions options)

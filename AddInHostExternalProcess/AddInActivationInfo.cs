@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HostView;
+using Quartz;
 
 namespace AddInHostExternalProcess
 {
@@ -15,5 +16,9 @@ namespace AddInHostExternalProcess
         public AddInProcess Process { get; set; }
 
         public ScheduledTaskHostView  AddIn { get; set; }
+
+        public IJobDetail JobDetail { get; set; }
+
+        public ITrigger Trigger { get; set; }
     }
 }
