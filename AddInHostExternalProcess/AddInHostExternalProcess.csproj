@@ -70,7 +70,7 @@
     <ProjectReference Include="..\HostView\HostView.csproj">
       <Project>{c614a511-dd3d-4dc3-b0dc-3b38f158b1ca}</Project>
       <Name>HostView</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

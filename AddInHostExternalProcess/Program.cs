@@ -15,18 +15,18 @@ using Quartz.Impl;
 
 namespace AddInHost
 {
-    class Program
+    public class Program
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         private static List<AddInActivationInfo> addins = new List<AddInActivationInfo>(); 
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             // create quartz scheduler
             ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
             var scheduler = schedulerFactory.GetScheduler();
             
-            string path = Environment.CurrentDirectory;
+            string path = args.Length > 0 ? args[0] : Environment.CurrentDirectory;
             AddInStore.Update(path);
 
             var addInTokens = AddInStore.FindAddIns(typeof(ScheduledTaskHostView), path);

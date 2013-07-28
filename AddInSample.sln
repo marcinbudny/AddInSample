@@ -38,6 +38,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RogueTask", "RogueTask\Rogu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddInHostExternalProcess", "AddInHostExternalProcess\AddInHostExternalProcess.csproj", "{EC4C9159-66C8-48FC-B8C8-23D38955D888}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "AzureCloudHost", "AzureCloudHost\AzureCloudHost.ccproj", "{D6CA9496-AB89-4849-AAC1-837AD962EADB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureWorkerRole", "AzureWorkerRole\AzureWorkerRole.csproj", "{D3981504-61FD-412D-9194-73535EDCC80E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +96,14 @@ Global
 		{EC4C9159-66C8-48FC-B8C8-23D38955D888}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC4C9159-66C8-48FC-B8C8-23D38955D888}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC4C9159-66C8-48FC-B8C8-23D38955D888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6CA9496-AB89-4849-AAC1-837AD962EADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6CA9496-AB89-4849-AAC1-837AD962EADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6CA9496-AB89-4849-AAC1-837AD962EADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6CA9496-AB89-4849-AAC1-837AD962EADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3981504-61FD-412D-9194-73535EDCC80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3981504-61FD-412D-9194-73535EDCC80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3981504-61FD-412D-9194-73535EDCC80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3981504-61FD-412D-9194-73535EDCC80E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
