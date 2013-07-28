@@ -73,6 +73,7 @@
     </ItemGroup>
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>xcopy /s /e /i /y "$(ProjectDir)..\bin" "$(ProjectDir)AddInFiles"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>
