@@ -10,7 +10,5 @@ namespace AddInContracts
     public class TaskResult
     {
         public bool Successful { get; set; }
-
-        public Exception Exception { get; set; }
     }
 }
